@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}Links - {{ SITENAME }}{% endblock %}
+{% block content %}
+				<div class="col-md-9" id="blog-main" role="main">
+					<article class="post">
+						<h1 class="post-title">Links</h1>
+						<p style="border-top: 1px solid #EEE;"></p>
+						<div class="friendlinks" style="margin-top:20px;margin-bottom: 100px;">
+						{%- if VFHKY_LINKS_1 -%}
+						{%- for single_link_1 in VFHKY_LINKS_1 -%}
+							<li><a href="{{ single_link_1[1] }}" title="{{ single_link_1[2] }}" target="_blank">{{ single_link_1[0] }}</a></li>
+						{%- endfor -%}
+						{%- endif -%}
+						{%- if VFHKY_LINKS_2 -%}
+						{%- for single_link_2 in VFHKY_LINKS_2 -%}
+							<li><a href="{{ single_link_2[1] }}" title="{{ single_link_2[2] }}" target="_blank">{{ single_link_2[0] }}</a></li>
+						{%- endfor -%}
+						{%- endif -%}
+						{%- if VFHKY_LINKS_3 -%}
+						{%- for single_link_3 in VFHKY_LINKS_3 -%}
+							<li><a href="{{ single_link_3[1] }}" title="{{ single_link_3[2] }}" target="_blank">{{ single_link_3[0] }}</a></li>
+						{%- endfor -%}
+						{%- endif -%}
+						</div>
+						<div class="post-content fmt">
+					    	<div class="tags">
+								<div class="post_tags">Tags: Links</div>
+								<div class="post-share">
+									<ul class="post-shareul clearfix">
+										<li class="post-shareli">
+											<a href="https://note.youdao.com/memory/?url={{ SITEURL }}/links.html&title=Links - TypeCodes" class="post-sharea ydshare" target="_blank" rel="nofollow">有道云笔记</a>
+										</li>
+										<li class="post-shareli">
+											<a href="https://service.weibo.com/share/share.php?searchPic=true&style=simple&url={{ SITEURL }}/links.html&title=Links - TypeCodes&source={{ SITEURL }}" class="post-sharea wbshare" target="_blank" rel="nofollow">新浪微博</a>
+										</li>
+										<li class="post-shareli">
+											<a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={{ SITEURL }}/links.html&title=Links - TypeCodes&content='utf-8'" class="post-sharea qzoneshare" target="_blank" rel="nofollow">QZone</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</article>
+					{% if (DISQUS_SITENAME or ISSO_SITEURL) and SITEURL %}
+					<div id="comments">
+						<h4 class="num">Comments &raquo;</h4>
+				    	{% if ISSO_SITEURL %}
+				    	<section id="isso-thread"></section>
+				    	{% endif %}
+				    	{% if DISQUS_SITENAME %}
+				    	<div id="disqus_thread" aria-live="polite"></div>
+				    	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+				    	{% endif %}
+				    </div>
+				    {% endif %}
+				</div>
+		<script src="{{ SITEURL_CDN }}/libs/js/jquery-1.0.pack.js"></script>
+		{% include 'disqus_script.html' %}
+		<script type="text/javascript">
+			jQuery(document).ready(function($){
+				$(".friendlinks a").each(function(e){
+					$(this).prepend("<img src=https://api.byi.pw/favicon?url="+this.href.replace(/^(http:\/\/[^\/]+).*$/, '$1').replace( 'http://', '' )+">");
+				});
+			});
+		</script>
+{% endblock %}

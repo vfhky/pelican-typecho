@@ -1,0 +1,36 @@
+<div class="col-md-3" id="blog-secondary" role="complementary">
+	<div class="widget">
+		<form id="search" method="get" action="{{ SITEURL }}/search.html">
+			<input type="text" name="q" id="s" size="20" value="Google...." onfocus="this.value = (this.value == this.defaultValue) ? '' : this.value" onblur="this.value = (this.value == '') ? this.defaultValue : this.value">
+		</form>
+	</div>
+	{% if SIDEBAR_IMAGE %}
+	<div class="widget">
+		<img src="{{ SITEURL }}/{{ SIDEBAR_IMAGE }}" alt="{{ SIDEBAR_IMAGE_ALT}}" width="{{SIDEBAR_IMAGE_WIDTH}}"/> 
+	</div>
+	{% endif %}
+	<div class="widget">
+		<h3 class="widget-title">Categories</h3>
+		<ul class="widget-list">
+		    {% for cat, n in categories %}
+		      <li class="current">
+		        <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat | capitalize }}</a> ({{ n|count }})
+		      </li>
+		    {% endfor %}
+		</ul>
+	</div>
+	<div class="widget">
+		<h3 class="widget-title">Recent Posts</h3>
+		<ul class="widget-list">
+		{% for article in articles[:7] %}
+			<li class="post">
+				<a href="{{ SITEURL }}/{{ article.url }}">{{ article.title|striptags }}</a>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+	<div class="widget widget-feed">
+		<a href="{{ SITEURL }}/feed.xml"><i class="i-rss"></i>RSS 订阅</a>
+	</div>
+</div>
+

@@ -1,0 +1,71 @@
+<div class="container">
+	<div class="row" role="contentinfo">
+		<section class="col-md-2 col-md-offset-1">
+			<h3>Links</h3>
+			<ul>
+			{%- if VFHKY_LINKS_1 -%}
+			{%- for single_link_1 in VFHKY_LINKS_1 -%}
+				<li><a href="{{ single_link_1[1] }}" title="{{ single_link_1[2] }}" target="_blank">{{ single_link_1[0] }}</a></li>
+			{%- endfor -%}
+			{%- endif -%}
+			</ul>
+		</section>
+		<section class="col-md-2">
+			<h3>&nbsp;</h3>
+			<ul>
+			{%- if VFHKY_LINKS_2 -%}
+			{%- for single_link_2 in VFHKY_LINKS_2 -%}
+				<li><a href="{{ single_link_2[1] }}" title="{{ single_link_2[2] }}" target="_blank">{{ single_link_2[0] }}</a></li>
+			{%- endfor -%}
+			{%- endif -%}
+			</ul>
+		</section>
+		<section class="col-md-2">
+			<h3>&nbsp;</h3>
+			<ul>
+			{%- if VFHKY_LINKS_3 -%}
+			{%- for single_link_3 in VFHKY_LINKS_3 -%}
+				<li><a href="{{ single_link_3[1] }}" title="{{ single_link_3[2] }}" target="_blank">{{ single_link_3[0] }}</a></li>
+			{%- endfor -%}
+			{%- endif -%}
+			</ul>
+		</section>
+		<section class="col-md-2">
+			<h3>&nbsp;</h3>
+			<ul>
+				<li><a href="{{ SITEURL }}/links.html">More..</a></li>
+			</ul>
+		</section>
+		<section class="col-md-2">
+			<h3>Following</h3>
+			<ul>
+				<li><a href="https://github.com/vfhky" class="following github" target="_blank" >GitHub</a></li>
+				<li><a href="http://weibo.com/typecodes" class="following weibo" target="_blank" rel="external nofollow">Weibo</a></li>
+			</ul>
+		</section>
+		<div class="col-md-12 copyright">
+			<a href="#top"><i class="i-logo-s">TOP</i></a>
+			<p>
+				<a href="https://beian.miit.gov.cn" rel="external nofollow" target="_blank">粤ICP备2022124287号-1</a> <br><img class="image" src="https://cdn.typecodes.com/libs/css/gabeian.png"><a rel="external nofollow" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44011202002232" >粤公网安备 44011202002232号</a>
+				<br> 
+				    {%- if COMMIT_ID -%}
+				        {%- if COMMIT_ICON -%}
+				            <img class="image" src="{{ COMMIT_ICON }}"> 
+				        {%- endif -%}
+				        <b> commit:</b> <em>  {{ COMMIT_ID[0:7] }}</em>
+				        {%- if COMMIT_DATE -%}
+				            <em>-{{ COMMIT_DATE }}  </em>
+				        {%- endif -%}
+				         &nbsp 
+				        {%- if BUILD_ID -%}
+				            <b> build:</b> <em>{{ BUILD_ID[0:7] }}#{{ BUILD_CUR_ID }}</em>
+				            {%- if BUILD_DATE -%}
+				                <em>-{{ BUILD_DATE }}</em>
+				            {%- endif -%}
+				        {%- endif -%}
+				    {%- endif -%}
+				<br>&copy; {% set years = dates|groupby('date.year')|sort(reverse=False) %}{% set sinceYear = years|first|first|default('2012') %}{{ sinceYear }}							<a href="{{ SITEURL }}">{{ SITENAME }}</a> . All Rights Reserved . Powered by <a href="http://getpelican.com" rel="external" target="_blank">Pelican</a>
+			</p>
+		</div>
+	</div>
+</div>

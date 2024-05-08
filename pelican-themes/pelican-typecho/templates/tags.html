@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}标签云 - {{ SITENAME }}{{ SITENAME }}{% endblock %}
+{% block content %}
+		<div class="col-md-9" id="blog-main" role="main">
+			<article class="post">
+				<h1 class="post-title">博客分类</h1>
+				<p>
+				{% for tag, articles in tags|sort %}
+					<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag.name }}</a> ({{ articles|count }})<br>
+				{% endfor %}
+				</p>
+			</article>
+		</div>
+		<!--3. right sider begin-->
+		{% include 'sidebar.html' %}
+{% endblock %}

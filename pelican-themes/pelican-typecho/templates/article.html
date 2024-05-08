@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title|striptags }} - {{ SITENAME }}{% endblock %}
+{% block content %}
+		<div class="col-md-9" id="blog-main" role="main">
+			<article class="post">
+		    {% include 'article_content.html' %}
+		    	<div class="post-reward">
+		    		<span id="post-reward-btn" for="reward">打赏支持</span>
+		    	</div>
+		    	<div id="post-reward-img" class="center hidden">
+		    		<img class="image" src="{{ SITEURL_CDN }}/libs/img/donate_weipayqr.png" title="微信打赏" width="200px" height="200px">
+		    		<img class="image" src="{{ SITEURL_CDN }}/libs/img/donate_alipay.png" title="支付宝打赏" width="200px" height="200px">
+		    	</div>
+		    	<script type="text/javascript">
+		    		document.getElementById('post-reward-btn').onclick = function() {
+		    			$('#post-reward-btn').addClass('hidden');
+		    			$('#post-reward-img').removeClass('hidden');
+				    }
+				    document.getElementById('post-reward-img').onclick = function() {
+				    	$('#post-reward-img').addClass('hidden');
+				    	$('#post-reward-btn').removeClass('hidden');
+				    }
+				</script>
+		    	<div class="tags">
+					<div class="post_tags">
+						Tags: {% for tag in article.tags %}<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %},{% endif %}{% endfor %}
+					</div>
+					<div class="post-share">
+						<ul class="post-shareul clearfix">
+							<li class="post-shareli">
+								<a href="https://note.youdao.com/memory/?url={{ SITEURL }}/{{ article.url }}&title={{ article.title|striptags }}" class="post-sharea ydshare" target="_blank" rel="nofollow">有道云笔记</a>
+							</li>
+							<li class="post-shareli">
+								<a href="https://service.weibo.com/share/share.php?searchPic=true&style=simple&url={{ SITEURL }}/{{ article.url }}&title={{ article.title|striptags }}&source={{ SITEURL }}" class="post-sharea wbshare" target="_blank" rel="nofollow">新浪微博</a>
+							</li>
+							<li class="post-shareli">
+								<a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={{ SITEURL }}/{{ article.url }}&title={{ article.title|striptags }}&content='utf-8'" class="post-sharea qzoneshare" target="_blank" rel="nofollow">QZone</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</article>
+			
+			{% if (DISQUS_SITENAME or ISSO_SITEURL) and SITEURL and article.status != "draft" %}
+			<div id="comments">
+				<h4 class="num">Comments &raquo;</h4>
+		    	{% if ISSO_SITEURL %}
+		    	<section id="isso-thread"></section>
+		    	{% endif %}
+		    	{% if DISQUS_SITENAME %}
+		    	<div id="disqus_thread" aria-live="polite"></div>
+		    	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		    	{% endif %}
+		    </div>
+		    {% endif %}
+		</div>
+		<!--3. right sider begin-->
+		{% include 'sidebar.html' %}
+{% endblock %}

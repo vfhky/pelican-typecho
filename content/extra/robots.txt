@@ -1,0 +1,26 @@
+User-agent: EasouSpider
+Disallow: /
+
+User-agent: Ezooms
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: ChinasoSpider
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+#disallow suffix
+User-agent: *
+Disallow: /*.swf$
+Disallow: /*.mp3$
+
+#disallow comment-page-*
+Disallow: /*/comment-page-*
+
+#other
+Disallow: /page/
+Disallow: /author/

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Archives - {{ SITENAME }}{% endblock %}
+{% block content %}
+		<div class="gsearch">
+			<h2>Archives</h2>
+			<script type="text/javascript">
+				function showhidden() {
+					$("#expand_collapse,.archives-yearmonth").css({cursor:"pointer"}),$("#archives ul li ul.archives-monthlisting").hide(),$("#archives ul li ul.archives-monthlisting:first").show(),$("#archives ul li span.archives-yearmonth").click(function(){return $(this).next().slideToggle("fast"),!1}),$("#expand_collapse").toggle(function(){$("#archives ul li ul.archives-monthlisting").slideDown("fast")},function(){$("#archives ul li ul.archives-monthlisting").slideUp("fast")})
+				}
+				window.onload = function(){
+					showhidden();  
+		        }
+			</script>
+			<div id="expand_collapse">全部展开/收缩</div>
+			<div id="archives">
+		        {% for year, date_year in dates|groupby('date.year')|sort(reverse=NEWEST_FIRST_ARCHIVES) %}
+		            <h3 class="al_year">{{ year }} 年</h3>
+		            <ul class="archives-list">
+		            {% for month, articles in date_year|groupby('date.month')|sort(reverse=NEWEST_FIRST_ARCHIVES) %}
+		            	<li>
+		            		<span class="archives-yearmonth">{{ articles[0].date.strftime('%m') }} 月</span>
+		            		<ul class="archives-monthlisting">
+		                {% for article in articles %}
+		                		<li>{{ article.date.strftime('%d') }}日: <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
+		                {% endfor %}
+		                	</ul>
+		                </li>
+		            {% endfor %}
+		            </ul>
+		        {% endfor %}
+		    </div>
+		</div>
+{% endblock %}
+

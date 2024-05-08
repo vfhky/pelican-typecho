@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+		<div class="col-md-9" id="blog-main" role="main">
+		{% set index=True %}
+		  {% if articles %}
+		  	<!--article recycle-->
+		  	{% for article in articles_page.object_list %}
+			<article class="post">
+				{% include 'article_content.html' %}
+			</article>
+		  	{% endfor %}
+		  	<!--page navigation-->
+		  	{% include 'pagination.html' %}
+		  {% endif %}
+		</div>
+		<!--3. right sider begin-->
+		{% include 'sidebar.html' %}
+{% endblock %}

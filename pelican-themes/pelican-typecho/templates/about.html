@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block title %}About - {{ SITENAME }}{% endblock %}
+{% block content %}
+				<div class="col-md-9" id="blog-main" role="main">
+					<article class="post">
+						<h1 class="post-title">About</h1>
+						<ul class="post-meta">
+							<li>作者: vfhky | 时间：2014-07-26 19:36</li>
+						</ul>
+						<div class="post-content fmt">
+							<h3>1 关于博客</h3>
+							<ul class="single_page">
+								<li><em>TypeCodes，beauty of programming.</em></li>
+								<li><em>TypeCodes</em>，取自两个英文单词 <em>Type</em> 和 <em>Codes</em> ，大致是 <strong><em>码字</em></strong> 的意思。</li>
+							</ul>
+							<h3>2 关于作者</h3>
+							<ul>
+								<li>
+									<p>
+										<strong>奋斗在以下区域：</strong><br />
+										<em>Linux C/C++</em><br />
+										<em>Java</em><br />
+										<em>Python</em><br />
+										<em>shell</em><br />
+										<em>Go</em><br />
+										<em>C#</em><br />
+										<em>NodeJs</em>
+									</p>
+								</li>
+							</ul>
+							<h3>3 博客历史</h3>
+							<ul class="single_page">
+								<li><b>2015-12-10</b><br/>正式迁移到Pelican。</li>
+								
+								<li><b>2015-12-01</b><br/>Pelican主题制作：准备从Typecho转换到静态博客Pelican。</li>
+								
+								<li><b>2014-08-09</b><br/>	正式从WordPress迁移到轻量级的Typecho博客，并制作了两个Typecho插件：音乐播放器、新浪云存储服务。</li>
+								
+								<li><b>2014-05-21</b><br/>	购买新域名typecodes.com和阿里云Linux主机，制作Typecho主题，准备从WordPress迁移到Typecho。</li>
+								
+								<li><b>2013-07-13</b><br/>折腾WordPess主题：近两个月的时间制作自己的WordPress主题，备案成功。</li>
+								
+								<li><b>2013-04-13</b><br/>域名到期：准备换成huangkeye.cn，开始备案以便迁移到国内Linux虚拟主机上，依然使用WordPress。</li>
+								
+								<li><b>2012-06-12</b><br/>起源：包子送的域名huangkeye.com，搭了一个WordPress博客，用的国外Windows虚拟主机。</li>
+							</ul>
+					    	<div class="post-reward">
+					    		<span id="post-reward-btn" for="reward">打赏支持</span>
+					    	</div>
+					    	<div id="post-reward-img" class="center hidden">
+					    		<img class="image" src="{{ SITEURL_CDN }}/libs/img/donate_weipayqr.png" title="微信打赏" width="200px" height="200px">
+					    		<img class="image" src="{{ SITEURL_CDN }}/libs/img/donate_alipay.png" title="支付宝打赏" width="200px" height="200px">
+					    	</div>
+					    	<script type="text/javascript">
+					    		document.getElementById('post-reward-btn').onclick = function() {
+					    			$('#post-reward-btn').addClass('hidden');
+					    			$('#post-reward-img').removeClass('hidden');
+							    }
+							    document.getElementById('post-reward-img').onclick = function() {
+							    	$('#post-reward-img').addClass('hidden');
+							    	$('#post-reward-btn').removeClass('hidden');
+							    }
+							</script>
+					    	<div class="tags">
+								<div class="post_tags">Tags: About</div>
+								<div class="post-share">
+									<ul class="post-shareul clearfix">
+										<li class="post-shareli">
+											<a href="https://note.youdao.com/memory/?url={{ SITEURL }}/about.html&title=About - TypeCodes" class="post-sharea ydshare" target="_blank" rel="nofollow">有道云笔记</a>
+										</li>
+										<li class="post-shareli">
+											<a href="https://service.weibo.com/share/share.php?searchPic=true&style=simple&url={{ SITEURL }}/about.html&title=About - TypeCodes&source={{ SITEURL }}" class="post-sharea wbshare" target="_blank" rel="nofollow">新浪微博</a>
+										</li>
+										<li class="post-shareli">
+											<a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={{ SITEURL }}/about.html&title=About - TypeCodes&content='utf-8'" class="post-sharea qzoneshare" target="_blank" rel="nofollow">QZone</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</article>
+					{% if (DISQUS_SITENAME or ISSO_SITEURL) and SITEURL %}
+					<div id="comments">
+						<h4 class="num">Comments &raquo;</h4>
+				    	{% if ISSO_SITEURL %}
+				    	<section id="isso-thread"></section>
+				    	{% endif %}
+				    	{% if DISQUS_SITENAME %}
+				    	<div id="disqus_thread" aria-live="polite"></div>
+				    	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+				    	{% endif %}
+				    </div>
+				    {% endif %}
+				</div>
+		{% include 'disqus_script.html' %}
+{% endblock %}

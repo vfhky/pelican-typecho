@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}{{ page.title }} &mdash; {{ SITENAME }}{% endblock %}
+{% block content %}
+		<div class="col-md-9" id="blog-main" role="main">
+		<div>
+		  <article role="article">
+		    <header>
+		      {% include 'qr_code.html' %}
+		      <h1 class="entry-title">{{ page.title }}</h1>
+		    </header>
+		    {{ page.content }}
+		  </article>
+		</div>
+		</div>
+{% endblock %}

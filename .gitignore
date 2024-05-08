@@ -1,0 +1,10 @@
+__pycache__
+output
+**/*zip
+**/*tar.gz
+*.jar
+*.tar
+*.tar.gz
+*.gz
+*.zip
+

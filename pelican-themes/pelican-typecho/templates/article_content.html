@@ -1,0 +1,12 @@
+<h2 class="post-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title|striptags }}</a></h2>
+<ul class="post-meta">
+	<li>作者：{{ article.author }} | 时间：{{ article.locale_date }} | 分类：<a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a></li>
+</ul>
+<div class="post-content fmt">
+{% if index %}
+	{{ article.summary }}
+	<p class="more"><a href="{{ SITEURL }}/{{ article.url }}" title="{{ article.title|striptags }}">- 阅读剩余部分 -</a></p>
+{% else %}
+	{{ article.content }}
+{% endif %}
+</div>

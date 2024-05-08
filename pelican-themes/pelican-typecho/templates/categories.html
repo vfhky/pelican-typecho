@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}博客分类 - {{ SITENAME }}{% endblock %}
+{% block content %}
+		<div class="col-md-9" id="blog-main" role="main">
+			<article class="post">
+				<h1 class="post-title">博客分类</h1>
+				<p>
+				{% for category, articles in categories|sort %}
+					<a href="{{ SITEURL }}/{{ category.url }}">{{ category.name }}</a> ({{ articles|count }})<br>
+				{% endfor %}
+				</p>
+			</article>
+		</div>
+		<!--3. right sider begin-->
+		{% include 'sidebar.html' %}
+{% endblock %}

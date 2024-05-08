@@ -1,0 +1,33 @@
+.highlight,html .gist .gist-file .gist-syntax .gist-highlight{
+    border:1px solid #05232b!important
+}
+.highlight pre{
+    font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace!important;
+    overflow:scroll;
+    overflow-y:hidden;
+    display:block;
+    padding:.8em!important;
+    overflow-x:auto;
+    line-height:1.5em;
+    white-space:pre
+}
+.highlight pre,.gist-highlight pre{
+    background:none;
+    -webkit-border-radius:none;
+    -moz-border-radius:none;
+    -ms-border-radius:none;
+    -o-border-radius:none;
+    border-radius:none;
+    border:none;
+    padding:0;
+    margin-bottom:0
+}
+pre::-webkit-scrollbar,.highlight::-webkit-scrollbar,.gist-highlight::-webkit-scrollbar{
+    height:.5em;
+    background:rgba(255,255,255,0.15)
+}
+pre::-webkit-scrollbar-thumb:horizontal,.highlight::-webkit-scrollbar-thumb:horizontal,.gist-highlight::-webkit-scrollbar-thumb:horizontal{
+    background:rgba(255,255,255,0.2);
+    -webkit-border-radius:4px;
+    border-radius:4px
+}

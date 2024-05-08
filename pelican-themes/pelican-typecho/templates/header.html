@@ -1,0 +1,26 @@
+		<header id="te-site-header">
+			<div class="container">
+				<a href="{{ SITEURL }}" class="te-site-logo" target="_self"> {{ SITENAME }}</a>
+				<ul class="nav nav-pills" id="te-site-nav">
+					<li><a href="{{ SITEURL }}">Home</a></li>
+				{%- if VFHKY_HEAD_PAGE_MAP -%}
+				{%- for single_page in VFHKY_HEAD_PAGE_MAP -%}
+					<li><a href="{{ SITEURL }}/{{ single_page[1] }}" title="{{ single_page[0] }}">{{ single_page[0] }}</a></li>
+				{%- endfor -%}
+				{%- else -%}
+					<li><a href="{{ SITEURL }}/{{ ARCHIVE_SAVE_AS | default('archives.html') }}">{{ NIUX2_ARCHIVE_TRANSL | default("Archive") }}</a></li>
+				{%- endif -%}
+				</ul>
+			</div>
+		</header>
+		<div class="te-headline">
+			<div class="container">
+				<h2 class="te-headline-title"> <a href="{{ SITEURL }}">{{ SITENAME }}</a></h2>
+			</div>
+		</div>
+		<div class="modaLbox">
+			<span class="modaLboxClose">&times;</span>
+			<img class="modaLbox-content">
+		</div>
+		<div class="container">
+			<div class="row">
